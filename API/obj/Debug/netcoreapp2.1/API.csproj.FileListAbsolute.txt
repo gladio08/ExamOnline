@@ -1,0 +1,14 @@
+H:\APK Kerjaan\ExamOnline\API\bin\Debug\netcoreapp2.1\API.deps.json
+H:\APK Kerjaan\ExamOnline\API\bin\Debug\netcoreapp2.1\API.runtimeconfig.json
+H:\APK Kerjaan\ExamOnline\API\bin\Debug\netcoreapp2.1\API.runtimeconfig.dev.json
+H:\APK Kerjaan\ExamOnline\API\bin\Debug\netcoreapp2.1\API.dll
+H:\APK Kerjaan\ExamOnline\API\bin\Debug\netcoreapp2.1\API.pdb
+H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.csprojAssemblyReference.cache
+H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.csproj.CoreCompileInputs.cache
+H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cache
+H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cs
+H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.AssemblyInfoInputs.cache
+H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.AssemblyInfo.cs
+H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
+H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.dll
+H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.pdb
