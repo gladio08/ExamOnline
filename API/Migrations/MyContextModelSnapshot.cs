@@ -37,6 +37,110 @@ namespace API.Migrations
                     b.ToTable("TB_M_Role");
                 });
 
+            modelBuilder.Entity("API.Models.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Answers");
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<DateTime>("DeleteDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<int?>("Participant_Id");
+
+                    b.Property<int?>("Question_Id");
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TB_T_Answer");
+                });
+
+            modelBuilder.Entity("API.Models.AnswerKey", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<DateTime>("DeleteDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<int?>("Question_Id");
+
+                    b.Property<string>("Score");
+
+                    b.Property<string>("TrueAnswer");
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TB_M_AnswerKey");
+                });
+
+            modelBuilder.Entity("API.Models.Choice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Choices");
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<DateTime>("DeleteDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<int?>("Question_Id");
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TB_M_Choice");
+                });
+
+            modelBuilder.Entity("API.Models.Participant", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<DateTime>("DeleteDate");
+
+                    b.Property<string>("GPA");
+
+                    b.Property<string>("Graduate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Phone");
+
+                    b.Property<DateTime>("RegisterDate");
+
+                    b.Property<string>("University");
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.Property<int?>("User_Id");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TB_M_Participant");
+                });
+
             modelBuilder.Entity("API.Models.Question", b =>
                 {
                     b.Property<int>("Id")
@@ -57,6 +161,28 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TB_M_Question");
+                });
+
+            modelBuilder.Entity("API.Models.TestTime", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<DateTime>("DeleteDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<int?>("Participant_Id");
+
+                    b.Property<DateTime>("TestDate");
+
+                    b.Property<DateTime>("UpdateDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TB_M_TestTime");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

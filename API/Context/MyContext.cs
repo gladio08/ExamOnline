@@ -16,6 +16,11 @@ namespace API.Context
 
         public DbSet<Role> Role { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<Participant> Participant { get; set; }
+        public DbSet<Answer> Answer { get; set; }
+        public DbSet<AnswerKey> AnswerKey { get; set; }
+        public DbSet<Choice> Choice { get; set; }
+        public DbSet<TestTime> TestTime { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

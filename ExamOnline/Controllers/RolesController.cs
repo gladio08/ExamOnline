@@ -22,11 +22,11 @@ namespace ExamOnline.Controllers
         }
         public IActionResult Index()
         {
-            var session = HttpContext.Session.GetString("Username");
-            if (session == null)
-            {
-                return RedirectToAction("Index", "Users");
-            }
+            //var session = HttpContext.Session.GetString("Username");
+            //if (session == null)
+            //{
+            //    return RedirectToAction("Index", "Users");
+            //}
             return View();
         }
 
