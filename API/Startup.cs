@@ -38,6 +38,11 @@ namespace API
 
             services.AddScoped<RoleRepository>();
             services.AddScoped<QuestionRepository>();
+            services.AddScoped<ParticipantRepository>();
+            services.AddScoped<AnswerRepository>();
+            services.AddScoped<AnswerKeyRepository>();
+            services.AddScoped<ChoiceRepository>();
+            services.AddScoped<TestTimeRepository>();
 
         }
 
