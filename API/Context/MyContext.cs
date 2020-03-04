@@ -21,6 +21,7 @@ namespace API.Context
         public DbSet<AnswerKey> AnswerKey { get; set; }
         public DbSet<Choice> Choice { get; set; }
         public DbSet<TestTime> TestTime { get; set; }
+        public DbSet<Bootcamp> Bootcamp { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
