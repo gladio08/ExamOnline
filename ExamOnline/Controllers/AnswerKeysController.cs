@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using API.Models;
+using API.viewModel;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -21,6 +22,7 @@ namespace ExamOnline.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.Question = GetQuestion();
             return View();
         }
 
@@ -32,22 +34,37 @@ namespace ExamOnline.Controllers
 
         public JsonResult List()
         {
-            IEnumerable<AnswerKey> answerKeys = null;
-            var responseTask = client.GetAsync("AnswerKeys");
+            IEnumerable<AnswerKeyVM> answerKeys = null;
+            var responseTask = client.GetAsync("AnswerKeys/GetQuestions");
             responseTask.Wait();
             var result = responseTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var readTask = result.Content.ReadAsAsync<IList<AnswerKey>>();
+                var readTask = result.Content.ReadAsAsync<IList<AnswerKeyVM>>();
                 readTask.Wait();
                 answerKeys = readTask.Result;
             }
             else
             {
-                answerKeys = Enumerable.Empty<AnswerKey>();
+                answerKeys = Enumerable.Empty<AnswerKeyVM>();
                 ModelState.AddModelError(String.Empty, "404 Not Found");
             }
             return Json(new { data = answerKeys });
+        }
+
+        public IList<Question> GetQuestion()
+        {
+            IList<Question> questions = null;
+            var responTask = client.GetAsync("Questions");
+            responTask.Wait();
+            var result = responTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<IList<Question>>();
+                readTask.Wait();
+                questions = readTask.Result;
+            }
+            return questions;
         }
 
         public JsonResult Create(AnswerKey answerKeys)

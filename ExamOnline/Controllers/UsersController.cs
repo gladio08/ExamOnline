@@ -18,7 +18,7 @@ namespace ExamOnline.Controllers
 
         public UsersController()
         {
-            client.BaseAddress = new Uri("http://192.168.128.79:1708/api/");
+            client.BaseAddress = new Uri("http://192.168.128.233:1708/");
             client.DefaultRequestHeaders.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODUyNzQwNDEsImlzcyI6ImJvb3RjYW1wcmVzb3VyY2VtYW5hZ2VtZW50IiwiYXVkIjoicmVhZGVycyJ9.YA-M_KN25FWmUuIS1bd9F5ioiRkVY8NCas1Bjma8kjQ");
             client.DefaultRequestHeaders.Accept.Clear();
             local.BaseAddress = new Uri("https://localhost:44359/Users/");
@@ -37,7 +37,7 @@ namespace ExamOnline.Controllers
             var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
             var byteContent = new ByteArrayContent(buffer);
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var login = client.PostAsync("Users/Login", byteContent).Result;
+            var login = client.PostAsync("Login", byteContent).Result;
             if (login.IsSuccessStatusCode)
             {
                 var content = login.Content.ReadAsStringAsync().Result.Replace("\"", "").Split("...");

@@ -3,10 +3,11 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/Layout.cshtml";
 }
+
 <div style="padding: 25px;" class="animated fadeIn">
     <div class="row">
         <div class="col-md-6">
-            <h5 style="font-size: 25px;">Role</h5>
+            <h5 style="font-size: 25px;">Answer</h5>
         </div>
         <div class="col-md-6">
             <button style="float: right; margin:5px" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" onclick="ClearScreen();"><i class="fa fa-plus"></i>&nbsp;Add Data</button>
@@ -16,7 +17,9 @@
     <table id="table" align="center" class="table table-hover table-bordered table-responsive-sm table-striped">
         <thead class="thead-light" style="text-align: center;">
             <tr>
-                <th>Name</th>
+                <th>Question</th>
+                <th>Answer Key</th>
+                <th>Score</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -40,12 +43,34 @@
                                 @*<label for="Id">Id</label>*@
                                 <input type="hidden" class="form-control" id="idtext" placeholder="Id" /> @*Jangan Lupa diambil token 1 jam sekali karna di deklarasi di controller sudah di deklarasikan ganti setiap 1 jam sekali*@
                             </div>
-                            <label for="name">Role Name</label>
+                            <div class="form-group">
+                                <label for="IdDiv">Question</label>@*Semua Karena Id Division yang Not Null !!!! Sibangsuy emang*@
+                                <select class="form-control" id="idquestion" placeholder="Division">
+                                    @foreach (var quest in ViewBag.Question)
+                                    {
+                                        <option value="@quest.Id">@quest.Questions</option>
+                                    }
+                                </select>
+                            </div>
+                            <label for="name">True Answer</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
                                 </div>
-                                <input id="nametext" type="text" class="form-control" required="" placeholder="Name">
+                                <input id="trueanswer" type="text" class="form-control" required="" placeholder="Name">
+                            </div>
+                            <div class="input-group mb-3" hidden>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input id="questions" type="text" class="form-control" required="" placeholder="Name">
+                            </div>
+                            <label for="name">Score</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input id="scoretext" type="text" class="form-control" required="" placeholder="Name">
                             </div>
                             <div class="padding-top: 60px">
                                 <hr>
@@ -87,12 +112,14 @@
             debugger;
             $("#table").DataTable({
                 "ajax": {
-                    "url": "/Roles/List",
+                    "url": "/AnswerKeys/List",
                     "type": "GET",
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "name" },
+                    { "data": "questions" },
+                    { "data": "trueAnswer" },
+                    { "data": "score" },
                     {
                         "render": function (data, type, row, meta) {
                             return "<a class='btn btn-warning' onclick = GetById('" + row.id + "');>Edit</a> " +
@@ -116,7 +143,7 @@
                 debugger;
                 if (result.value) {
                     $.ajax({
-                        "url": "/Roles/Delete",
+                        "url": "/AnswerKeys/Delete",
                         "datatype": "json",
                         "data": { Id: Id }
                     }).then((hasil) => {
@@ -144,14 +171,16 @@
         }
         function Edit(id) {
             debugger;
-            var role = new Object();
-            role.id = $("#idtext").val();
-            role.name = $("#nametext").val();
+            var question = new Object();
+            question.id = $("#idtext").val();
+            question.question_Id = $("#idquestion").val();
+            question.trueAnswer = $("#trueanswer").val();
+            question.score = $("#scoretext").val();
             $.ajax({
-                "url": "/Roles/Edit",
+                "url": "/AnswerKeys/Edit",
                 "type": "POST",
                 "datatype": "json",
-                "data": role
+                "data": question
             }).then((result) => {
                 debugger;
                 if (result.data != null) {
@@ -178,16 +207,18 @@
         }
         function Save() {
             debugger;
-            var role = new Object();
-            role.name = $("#nametext").val();
+            var question = new Object();
+            question.question_Id = $("#idquestion").val();
+            question.trueAnswer = $("#trueanswer").val();
+            question.score = $("#scoretext").val();
             $.ajax({
-                "url": "/Roles/Create",
+                "url": "/AnswerKeys/Create",
                 "type": "POST",
                 "datatype": "json",
-                "data": role
+                "data": question
             }).then((result) => {
                 debugger;
-                if (result.statusCode == 200) {
+                if (result.data != null) {
                     Swal.fire({
                         text: 'Success!',
                         title: 'Your file has been Create.',
@@ -200,7 +231,7 @@
                 else {
                     Swal.fire(
                         'Failed!',
-                        'Your file has not Save.',
+                        'Your file has not deleted.',
                         'Failed'
                     )
                 }
@@ -209,13 +240,17 @@
         function ClearScreen() {
             document.getElementById("idtext").disabled = true;
             $("#idtext").val('');
-            $("#nametext").val('');
+            $("#idquestion").val('');
+            $("#trueanswer").val('');
+            $("#scoretext").val('');
+
             $("#Update").hide();
             $("#Save").show();
         }
         function GetById(id) {
+            debugger;
             $.ajax({
-                "url": "/Roles/Details",
+                "url": "/AnswerKeys/Details",
                 "type": "GET",
                 "datatype": "json",
                 "data": { id: id }
@@ -224,7 +259,9 @@
                 if (result.data != null) {
                     document.getElementById("idtext").disabled = true;
                     $("#idtext").val(result.data.id);
-                    $("#nametext").val(result.data.name);
+                    $("#idquestion").val(result.data.question_Id);
+                    $("#trueanswer").val(result.data.trueAnswer);
+                    $("#scoretext").val(result.data.score);
 
                     $("#myModal").modal('show');
                     $("#Update").show();
@@ -247,5 +284,4 @@
         }
     </script>
 }
-
 

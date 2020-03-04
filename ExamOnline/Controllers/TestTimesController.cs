@@ -5,28 +5,24 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using API.Model;
+using API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace ExamOnline.Controllers
 {
-    public class RolesController : Controller
+    public class TestTimesController : Controller
     {
         readonly HttpClient client = new HttpClient();
-        public RolesController()
+        public TestTimesController()
         {
             client.BaseAddress = new Uri("https://localhost:44354/api/");
             client.DefaultRequestHeaders.Accept.Clear();
-
         }
+
         public IActionResult Index()
         {
-            //var session = HttpContext.Session.GetString("Username");
-            //if (session == null)
-            //{
-            //    return RedirectToAction("Index", "Users");
-            //}
             return View();
         }
 
@@ -38,57 +34,55 @@ namespace ExamOnline.Controllers
 
         public JsonResult List()
         {
-            IEnumerable<Role> roles = null;
-            var responseTask = client.GetAsync("Roles");
+            IEnumerable<TestTime> testTimes = null;
+            var responseTask = client.GetAsync("TestTimes");
             responseTask.Wait();
             var result = responseTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var readTask = result.Content.ReadAsAsync<IList<Role>>();
+                var readTask = result.Content.ReadAsAsync<IList<TestTime>>();
                 readTask.Wait();
-                roles = readTask.Result;
+                testTimes = readTask.Result;
             }
             else
             {
-                roles = Enumerable.Empty<Role>();
+                testTimes = Enumerable.Empty<TestTime>();
                 ModelState.AddModelError(String.Empty, "404 Not Found");
             }
-            return Json(new { data = roles });
+            return Json(new { data = testTimes });
         }
 
-        public JsonResult Create(Role role)
+        public JsonResult Create(TestTime testTime)
         {
-            var myContent = JsonConvert.SerializeObject(role);
+            var myContent = JsonConvert.SerializeObject(testTime);
             var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
             var byteContent = new ByteArrayContent(buffer);
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var affectedRow = client.PostAsync("Roles/Post", byteContent).Result;
-            return Json(new { data = affectedRow, affectedRow.StatusCode }); //Bila menggunakan status code, jgn lupa dikembalikan status codenya
+            var affectedRow = client.PostAsync("TestTimes/", byteContent).Result;
+            return Json(new { data = affectedRow });
         }
 
-        public JsonResult Edit(int id, Role role)
+        public JsonResult Edit(int id, TestTime testTime)
         {
-            var myContent = JsonConvert.SerializeObject(role);
+            var myContent = JsonConvert.SerializeObject(testTime);
             var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
             var byteContent = new ByteArrayContent(buffer);
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var departments = client.PutAsync("Roles/" + id, byteContent).Result;
-            return Json(new { data = departments });
+            var testTimes = client.PutAsync("TestTimes/" + id, byteContent).Result;
+            return Json(new { data = testTimes });
         }
 
         public JsonResult Details(int id)
         {
-            var cek = client.GetAsync("Roles/" + id).Result;
-            var read = cek.Content.ReadAsAsync<Role>().Result;
+            var cek = client.GetAsync("TestTimes/" + id).Result;
+            var read = cek.Content.ReadAsAsync<TestTime>().Result;
             return Json(new { data = read });
         }
 
-        public JsonResult Delete(Role role, int id)
+        public JsonResult Delete(TestTime testTime, int id)
         {
-            var affectedRow = client.DeleteAsync("Roles/" + id).ToString();
+            var affectedRow = client.DeleteAsync("TestTimes/" + id).ToString();
             return Json(new { data = affectedRow });
         }
-
-
     }
 }
