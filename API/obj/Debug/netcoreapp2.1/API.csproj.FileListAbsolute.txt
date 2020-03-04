@@ -12,3 +12,16 @@ H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.AssemblyInfo.cs
 H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
 H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.dll
 H:\APK Kerjaan\ExamOnline\API\obj\Debug\netcoreapp2.1\API.pdb
+D:\GitHUb\sangatBaru\ExamOnline\API\bin\Debug\netcoreapp2.1\API.deps.json
+D:\GitHUb\sangatBaru\ExamOnline\API\bin\Debug\netcoreapp2.1\API.runtimeconfig.json
+D:\GitHUb\sangatBaru\ExamOnline\API\bin\Debug\netcoreapp2.1\API.runtimeconfig.dev.json
+D:\GitHUb\sangatBaru\ExamOnline\API\bin\Debug\netcoreapp2.1\API.dll
+D:\GitHUb\sangatBaru\ExamOnline\API\bin\Debug\netcoreapp2.1\API.pdb
+D:\GitHUb\sangatBaru\ExamOnline\API\obj\Debug\netcoreapp2.1\API.csproj.CoreCompileInputs.cache
+D:\GitHUb\sangatBaru\ExamOnline\API\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cache
+D:\GitHUb\sangatBaru\ExamOnline\API\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cs
+D:\GitHUb\sangatBaru\ExamOnline\API\obj\Debug\netcoreapp2.1\API.AssemblyInfoInputs.cache
+D:\GitHUb\sangatBaru\ExamOnline\API\obj\Debug\netcoreapp2.1\API.AssemblyInfo.cs
+D:\GitHUb\sangatBaru\ExamOnline\API\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
+D:\GitHUb\sangatBaru\ExamOnline\API\obj\Debug\netcoreapp2.1\API.dll
+D:\GitHUb\sangatBaru\ExamOnline\API\obj\Debug\netcoreapp2.1\API.pdb
