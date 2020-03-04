@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/LayoutBackEnd.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="jquery.twbsPagination.min.js"></script>
+<div class="container">
+    <!-- Content Header (Page header) -->
+    <div class="box-tools pull-right" id="timer" style="background-color:azure;">
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="box box-success box-solid " style="background-color:azure;">
+                <div class="box-header with-border" style="background-color:blue">
+                    <h3 class="box-title" style="color:aliceblue;">Soal</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div id="isi-tes-soal" style="font-size: 15px;">
+                        
+                        <label><input class="ans" type="radio" name="pilih b" value="a" oninvalid="this.setCustomValidity('Pilih Jawaban')">&nbsp;<span style="font-weight: bold">A.</span>&nbsp;</label>
+                        <br>
+                        <label><input class="ans" type="radio" name="piliha" value="b">&nbsp;<span style="font-weight: bold">B.</span>&nbsp;</label>
+                        <br>
+                        <label><input class="ans" type="radio" name="pilih" value="c">&nbsp;<span style="font-weight: bold">C.</span>&nbsp;</label>
+                        <br>
+                        <div id="list"></div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div>
+            <br />
+            <div class="box-footer">
+                <input type="button" id="previous" onclick="previousPage()" value="previous" />
+                <button type="button" class="btn btn-default" id="btn-selanjutnya">Soal Selanjutnya</button>
+            </div>
+            <div>
+                <div>
+                   
+                </div>
+            </div>
+    </section><!-- /.content -->
+
+    <div class="modal" style="max-height: 100%;overflow-y: auto;" id="modal-hentikan" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <?php echo form_open($url.'/hentikan_tes','id="form-hentikan"'); ?>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal">&times;</button>
+                    <div id="trx-judul">Konfirmasi Hentikan Tes</div>
+                </div>
+                <div class="modal-body">
+                    <div class="row-fluid">
+                        <div class="box-body">
+                            <div id="form-pesan"></div>
+                            <div class="callout callout-info">
+                                <p>
+                                    Apakah anda yakin mengakhiri mata uji ini ?
+                                    <br />Jawaban Tes yang sudah selesai tidak dapat diubah.
+                                </p>
+
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Tes</label>
+                                <input type="hidden" name="hentikan-tes-id" id="hentikan-tes-id">
+                                <input type="hidden" name="hentikan-tes-user-id" id="hentikan-tes-user-id">
+                                <input type="text" class="form-control" id="hentikan-tes-nama" name="hentikan-tes-nama" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Keterangan Soal</label>
+                                <input type="text" class="form-control" id="hentikan-dijawab" name="hentikan-dijawab" readonly>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="hentikan-centang" name="hentikan-centang" value="1"> Centang dan klik tombol Hentikan Tes.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" id="tambah-simpan" class="btn btn-primary">Hentikan Tes</button>
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.container -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $('#demo').pagination({
+        dataSource: [1, 2, 3, 4, 5, 6, 7, 8],
+        pageSize: 1,
+        showPageNumbers: false,
+        showNavigator: true,
+        callback: function (data, pagination) {
+        }
+    })
+    var list = new Array();
+    var pageList = new Array();
+    var currentPage = 1;
+    var numberPerPage = 10;
+    var numberOfPages = 0;
+
+    function previousPage() {
+        currentPage -= 1;
+        loadList();
+    }
+    function loadList() {
+        var begin = ((currentPage - 1) * numberPerPage);
+        var end = begin + numberPerPage;
+
+        pageList = list.slice(begin, end);
+        drawList();
+        check();
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var detik = 10;
+        var menit = 0;
+        var jam = 0;
+        function hitung() {
+            setTimeout(hitung, 1000);
+            if (menit < 10 && jam == 0) {
+                var peringatan = 'style="color:red"';
+            };
+            $('#timer').html(
+                '<h6 align="center"' + peringatan + '>Sisa waktu anda ' + jam + ' jam : ' + menit + ' menit : ' + detik + ' detik</h6>'
+            );
+            detik--;
+            if (detik < 0) {
+                detik = 59;
+                menit--;
+                if (menit < 0) {
+                    menit = 0;
+                    detik = 0;
+                    if (menit == 0) {
+
+                    }
+                }
+            }
+        }
+        hitung();
+    });
+</script>
+<script>
+    function soal()
+</script>
+
+

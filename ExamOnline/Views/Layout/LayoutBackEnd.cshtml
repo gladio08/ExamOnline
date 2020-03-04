@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #2780E3;">
+    <div>
+        <!--Header Konten-->
+        <div class="rowmargin" style="padding: 20px; background-color:  mediumblue">
+            <div style="font-weight: bold;font-family: Bahnschrift SemiBold;color: white; font-size: 12px">
+                <label> &nbsp;&nbsp;&nbsp;Exam Online &nbsp;&nbsp;&nbsp; </label>
+                <label id="watch"></label>
+            </div>
+        </div>
+        <!-- Halaman Isi -->
+        <div class="content-wrapper">
+            <div class="contet-header">
+                <div >
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        <br>
+
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        function clock() {
+            var now = new Date();
+            var secs = ('0' + now.getSeconds()).slice(-2);
+            var mins = ('0' + now.getMinutes()).slice(-2);
+            var hr = now.getHours();
+            var Time = hr + ":" + mins + ":" + secs;
+            document.getElementById("watch").innerHTML = Time;
+            requestAnimationFrame(clock);
+        }
+
+        requestAnimationFrame(clock);
+    });
+</script>
+

@@ -6,21 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\Asset\img\**" />
-    <Compile Remove="wwwroot\Asset\scss\**" />
-    <Compile Remove="wwwroot\Asset\vendor\**" />
-    <Content Remove="wwwroot\Asset\img\**" />
-    <Content Remove="wwwroot\Asset\scss\**" />
-    <Content Remove="wwwroot\Asset\vendor\**" />
-    <EmbeddedResource Remove="wwwroot\Asset\img\**" />
-    <EmbeddedResource Remove="wwwroot\Asset\scss\**" />
-    <EmbeddedResource Remove="wwwroot\Asset\vendor\**" />
-    <None Remove="wwwroot\Asset\img\**" />
-    <None Remove="wwwroot\Asset\scss\**" />
-    <None Remove="wwwroot\Asset\vendor\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Data\Migrations\20200225080636_tableRole.cs" />
     <Compile Remove="Data\Migrations\20200225080636_tableRole.Designer.cs" />
     <Compile Remove="Data\Migrations\20200225080826_tableRole.cs" />
@@ -36,6 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Choices\Index.cshtml" />
+    <None Include="Views\Layout\Layout.cshtml" />
+    <None Include="Views\Layout\LayoutBackEnd.cshtml" />
+    <None Include="Views\LoginClient\Index.cshtml" />
+    <None Include="Views\ParticipantsClient\Index.cshtml" />
+    <None Include="Views\QuestionsClient\Index.cshtml" />
     <None Include="wwwroot\AssetLogin\img\undraw_posting_photo.svg" />
     <None Include="wwwroot\AssetLogin\js\demo\chart-area-demo.js" />
     <None Include="wwwroot\AssetLogin\js\demo\chart-bar-demo.js" />
@@ -1886,6 +1877,56 @@
     <None Include="wwwroot\Asset\lib\jquery\dist\jquery.js" />
     <None Include="wwwroot\Asset\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\Asset\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\css\bootstrap.css.map" />
+    <None Include="wwwroot\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\dataTables.bootstrap.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\dataTables.bootstrap.min.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\dataTables.bootstrap4.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\dataTables.foundation.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\dataTables.foundation.min.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\dataTables.jqueryui.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\dataTables.jqueryui.min.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\dataTables.semanticui.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\dataTables.semanticui.min.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\jquery.dataTables.js" />
+    <None Include="wwwroot\DataTables\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\DataTables\datatables.js" />
+    <None Include="wwwroot\DataTables\datatables.min.js" />
+    <None Include="wwwroot\images\banner1.svg" />
+    <None Include="wwwroot\images\banner2.svg" />
+    <None Include="wwwroot\images\banner3.svg" />
+    <None Include="wwwroot\js\bootstrap-datepicker.js" />
+    <None Include="wwwroot\js\bootstrap-modal.js" />
+    <None Include="wwwroot\js\bootstrap-transition.js" />
+    <None Include="wwwroot\js\bootstrap.js" />
+    <None Include="wwwroot\js\jquery.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\site.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\npm.js" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
   </ItemGroup>
 
   <ItemGroup>

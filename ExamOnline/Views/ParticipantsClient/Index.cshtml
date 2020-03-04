@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/LayoutBackEnd.cshtml";
+}
+<br />
+<br />
+<br />
+
+<div style="background-color: #F7F7F8">
+    <h1> Exam Online</h1>
+    <br/>
+
+    <div style="padding: 25px;" class="animated--fadeIn">
+
+        <div class="row">
+            <p>Durasi Waktu  :   30 menit</p>
+            <p>Jumlah soal   :   20 soal</p>
+            <p>jenis soal    :  </p>
+           <p>                 a.  Technical tes</p>
+            <p>                b.  Pesikotes Kepribadian</p><br />
+
+            <p>Apabila Anda tidak dapat melakukan tes hari ini,</p>
+            <p>Anda bisa mengajukan Resechedule untuk penggantian hari tes, dengan jangka waktu yang sudah di tentukan. sistem akan memberikan password baru untuk anda login di hari yang sudah terjadwal.</p>
+
+
+
+
+            <div class="form-group" align="right">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">&nbsp;&nbsp;Resechedule</button>
+                <a href="@Url.Action("Index","QuestionsClient")" class="btn btn-primary">&nbsp;&nbsp;Start Examp </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Resechedule</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label for="id" hidden>ID</label>
+                <div class="input-group mb-3" hidden>
+                    <input id="IdText" type="text" hidden class="form-control" placeholder="ID">
+                </div>
+                <label class="col-sm-10" for="name">Reschedule</label>
+                <div class="col-sm-5">
+                    <input type="text" name="daterange" id="date_range" class="form-control" />
+                </div>
+                <hr>
+                <div class="form-group" align="right">
+                    <button type="button" class="btn btn-success" id="Save" onclick="Validation();"><i class="fa fa-check"></i>&nbsp;&nbsp;Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;&nbsp;Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script>
+
+    $('#IdText').hide();
+</script>
+<script>
+    $(function () {
+        $('input[name="daterange"]').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            autoclose: true,
+            dateFormat: 'yy-mm-dd',
+            maxDate: ' +3m +5d',
+            minDate: new Date()
+
+
+        });
+    });
+
+</script>
+
+

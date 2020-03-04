@@ -17,11 +17,13 @@
     <table id="table" align="center" class="table table-hover table-bordered table-responsive-sm table-striped">
         <thead class="thead-light" style="text-align: center;">
             <tr>
-                <th>nomor </th>
-                <th>Questions</th>
+                @*<th style="width: 6px;">No. </th>*@
+                <th>Question</th>
                 <th>Choice</th>
+                <th>Action</th>
             </tr>
         </thead>
+        <tbody style="opacity: 0.7;"></tbody>
     </table>
 </div>
 
@@ -48,32 +50,23 @@
                                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
 
                                 </div>
-                                <select name="Question" class="form-control">
-                                    <option value="Pesikotes">Soalini dari database</option>
-                                    <option value="technicaltes">technical tes</option>
+                                <select name="Question" class="form-control" id="Question" runat="server">
+                                    <option selected disabled>Select Questions</option>
+                                    @foreach (var Questions in ViewBag.Questions)
+                                    {
+                                        <option value="@Questions.id">@Questions.Questions</option>
+                                    }
                                 </select>
                             </div>
-                            <label for="name">Choice</label>
-                            <div class="input-group control-group after-add-more">
-                                <input type="text" name="Choice[]" class="form-control" placeholder="pleace choise">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>
+                            <div id='group'>
+                                <label>1 :</label>
+                                <div class="control-group input-group" id=" div1">
+                                    <input type="text" id="input1" name="choise" class="form-control" placeholder="Choise" />
                                 </div>
                             </div>
-                            <!-- Copy Fields -->
-                            <div class="copy hide">
-                                <div class="control-group input-group" style="margin-top:10px">
-                                    <input type="text" name="addmore[]" class="form-control" placeholder="Enter Name Here">
-                                    <div class="input-group-btn">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="group">
-                                <div id=" div1">
-                                    <label>1 : </label> <input type="text" id=" input1" />
-                                </div>
-
+                            <br />
+                            <div class="input-group-btn">
+                                <button class="btn btn-success add-more" type="button"  id="add"><i class="glyphicon glyphicon-plus"></i> Add</button>
                             </div>
                             <div class="padding-top: 60px">
                                 <hr>
@@ -113,7 +106,6 @@
     </script>
     <script>
         $(document).ready(function () {
-            debugger;
             $("#table").DataTable({
                 "ajax": {
                     "url": "/Choices/List",
@@ -121,14 +113,16 @@
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "name" },
+                    //{ "data": null },
+                    { "data": "question_Id" },
+                    { "data": "choices" },
                     {
                         "render": function (data, type, row, meta) {
                             return "<a class='btn btn-warning' onclick = GetById('" + row.id + "');>Edit</a> " +
-                                " <a class='btn btn-danger' onclick = Delete('" + row.id + "');>Delete</a>";
+                                "<a class='btn btn-danger' onclick = Delete('" + row.id + "');>Delete</a>";
                         }
                     }
-                ]
+                ],
             });
         });
 
@@ -287,21 +281,23 @@
             });
         });
 
-        $(document).ready(function ()){
+        $(document).ready(function (){
             var i = 2;
-            $("#add").click(function ()){
-                if (i > 5) {
+            $("#add").click(function (){
+                if (i>5) {
                     alert("maksimal 5 input");
                     return false;
                 }
-                var div = $(document.createElement('div')).attr.after()
+                var div = $(document.createElement('div'))
+                    .attr("id", 'div' + i);
+                div.after()
                     .html('<label>' + i + ':</label>'
-                        + '<input type ="text" ' + i + '" id="input' + i + '" />');
+                    + '<input type ="text"  class="form-control" placeholder="Choise"  ' + i + '" id="input' + i + '" />');
                 div.appendTo("#group");
                 i++;
             });
-            $(#hapus).click(function () {
-                if (i == 2) {
+            $("#hapus").click(function () {
+                if (i==2) {
                     alert("Input Tidak bisa di Hapus lagi.");
                     return false;
                 }

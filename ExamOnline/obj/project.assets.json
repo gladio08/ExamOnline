@@ -12706,23 +12706,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lenovo\\.nuget\\packages\\": {},
+    "C:\\Users\\62823\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\APK Kerjaan\\ExamOnline\\ExamOnline\\ExamOnline.csproj",
+      "projectUniqueName": "D:\\GitHUb\\sangatBaru\\ExamOnline\\ExamOnline\\ExamOnline.csproj",
       "projectName": "ExamOnline",
-      "projectPath": "H:\\APK Kerjaan\\ExamOnline\\ExamOnline\\ExamOnline.csproj",
-      "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-      "outputPath": "H:\\APK Kerjaan\\ExamOnline\\ExamOnline\\obj\\",
+      "projectPath": "D:\\GitHUb\\sangatBaru\\ExamOnline\\ExamOnline\\ExamOnline.csproj",
+      "packagesPath": "C:\\Users\\62823\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHUb\\sangatBaru\\ExamOnline\\ExamOnline\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\62823\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12735,8 +12735,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "H:\\APK Kerjaan\\ExamOnline\\API\\API.csproj": {
-              "projectPath": "H:\\APK Kerjaan\\ExamOnline\\API\\API.csproj"
+            "D:\\GitHUb\\sangatBaru\\ExamOnline\\API\\API.csproj": {
+              "projectPath": "D:\\GitHUb\\sangatBaru\\ExamOnline\\API\\API.csproj"
             }
           }
         }
