@@ -3,10 +3,11 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/Layout.cshtml";
 }
+
 <div style="padding: 25px;" class="animated fadeIn">
     <div class="row">
         <div class="col-md-6">
-            <h5 style="font-size: 25px;">Role</h5>
+            <h5 style="font-size: 25px;">Choice</h5>
         </div>
         <div class="col-md-6">
             <button style="float: right; margin:5px" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" onclick="ClearScreen();"><i class="fa fa-plus"></i>&nbsp;Add Data</button>
@@ -16,8 +17,9 @@
     <table id="table" align="center" class="table table-hover table-bordered table-responsive-sm table-striped">
         <thead class="thead-light" style="text-align: center;">
             <tr>
-                <th>Name</th>
-                <th>Action</th>
+                <th>nomor </th>
+                <th>Questions</th>
+                <th>Choice</th>
             </tr>
         </thead>
     </table>
@@ -40,12 +42,38 @@
                                 @*<label for="Id">Id</label>*@
                                 <input type="hidden" class="form-control" id="idtext" placeholder="Id" /> @*Jangan Lupa diambil token 1 jam sekali karna di deklarasi di controller sudah di deklarasikan ganti setiap 1 jam sekali*@
                             </div>
-                            <label for="name">Role Name</label>
+                            <label for="name">Question</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+
                                 </div>
-                                <input id="nametext" type="text" class="form-control" required="" placeholder="Name">
+                                <select name="Question" class="form-control">
+                                    <option value="Pesikotes">Soalini dari database</option>
+                                    <option value="technicaltes">technical tes</option>
+                                </select>
+                            </div>
+                            <label for="name">Choice</label>
+                            <div class="input-group control-group after-add-more">
+                                <input type="text" name="Choice[]" class="form-control" placeholder="pleace choise">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <!-- Copy Fields -->
+                            <div class="copy hide">
+                                <div class="control-group input-group" style="margin-top:10px">
+                                    <input type="text" name="addmore[]" class="form-control" placeholder="Enter Name Here">
+                                    <div class="input-group-btn">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="group">
+                                <div id=" div1">
+                                    <label>1 : </label> <input type="text" id=" input1" />
+                                </div>
+
                             </div>
                             <div class="padding-top: 60px">
                                 <hr>
@@ -56,6 +84,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </form>
             </div>
@@ -87,7 +116,7 @@
             debugger;
             $("#table").DataTable({
                 "ajax": {
-                    "url": "/Roles/List",
+                    "url": "/Choices/List",
                     "type": "GET",
                     "datatype": "json"
                 },
@@ -116,7 +145,7 @@
                 debugger;
                 if (result.value) {
                     $.ajax({
-                        "url": "/Roles/Delete",
+                        "url": "/Choices/Delete",
                         "datatype": "json",
                         "data": { Id: Id }
                     }).then((hasil) => {
@@ -148,7 +177,7 @@
             role.id = $("#idtext").val();
             role.name = $("#nametext").val();
             $.ajax({
-                "url": "/Roles/Edit",
+                "url": "/Choices/Edit",
                 "type": "POST",
                 "datatype": "json",
                 "data": role
@@ -181,13 +210,13 @@
             var role = new Object();
             role.name = $("#nametext").val();
             $.ajax({
-                "url": "/Roles/Create",
+                "url": "/Choices/Create",
                 "type": "POST",
                 "datatype": "json",
                 "data": role
             }).then((result) => {
                 debugger;
-                if (result.statusCode == 200) {
+                if (result.data != null) {
                     Swal.fire({
                         text: 'Success!',
                         title: 'Your file has been Create.',
@@ -200,7 +229,7 @@
                 else {
                     Swal.fire(
                         'Failed!',
-                        'Your file has not Save.',
+                        'Your file has not deleted.',
                         'Failed'
                     )
                 }
@@ -215,7 +244,7 @@
         }
         function GetById(id) {
             $.ajax({
-                "url": "/Roles/Details",
+                "url": "/Choices/Details",
                 "type": "GET",
                 "datatype": "json",
                 "data": { id: id }
@@ -245,7 +274,47 @@
             }
 
         }
-    </script>
-}
 
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".add-more").click(function () {
+                var html = $(".copy").html();
+                $(".after-add-more").after(html);
+            });
+            $("body").on("click", ".remove", function () {
+                $(this).parents(".control-group").remove();
+            });
+        });
+
+        $(document).ready(function ()){
+            var i = 2;
+            $("#add").click(function ()){
+                if (i > 5) {
+                    alert("maksimal 5 input");
+                    return false;
+                }
+                var div = $(document.createElement('div')).attr.after()
+                    .html('<label>' + i + ':</label>'
+                        + '<input type ="text" ' + i + '" id="input' + i + '" />');
+                div.appendTo("#group");
+                i++;
+            });
+            $(#hapus).click(function () {
+                if (i == 2) {
+                    alert("Input Tidak bisa di Hapus lagi.");
+                    return false;
+                }
+                i--;
+                $("#div" + i).remove();
+            });
+        });
+
+    </script>
+    <style type="text/css">
+        a {
+            cursor: pointer
+        }
+    </style>
+}
 

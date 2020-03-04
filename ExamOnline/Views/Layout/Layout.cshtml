@@ -49,12 +49,27 @@
                 <li>
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ticket"></i>&nbsp;&nbsp;MII</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
+                        @*<li>
                             <a href="@Url.Action("Index", "Roles")" class="nav-link"><i class="fa fa-address-card-o"></i>&nbsp;&nbsp;Roles</a>
+                        </li>*@
+                        <li>
+                        <li>
+                            <a href="@Url.Action("Index", "AnswerKeys")" class="nav-link"><i class="fa fa-plus"></i>&nbsp;&nbsp;Answer Key</a>
                         </li>
                         <li>
+                            <a href="@Url.Action("Index", "Answers")" class="nav-link"><i class="fa fa-plus"></i>&nbsp;&nbsp;Answer</a>
+                        </li>
                         <li>
-                            <a href="@Url.Action("Index", "Department")" class="nav-link"><i class="fa fa-plus"></i>&nbsp;&nbsp;Department</a>
+                            <a href="@Url.Action("Index", "Choices")" class="nav-link"><i class="fa fa-plus"></i>&nbsp;&nbsp;Choice</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Participants")" class="nav-link"><i class="fa fa-plus"></i>&nbsp;&nbsp;Participant</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Questions")" class="nav-link"><i class="fa fa-plus"></i>&nbsp;&nbsp;Question</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "TestTimes")" class="nav-link"><i class="fa fa-plus"></i>&nbsp;&nbsp;Test Time</a>
                         </li>
                     </ul>
                 </li>
@@ -69,7 +84,7 @@
                         </li>
                         <li>
                         <li>
-                            <a @*href="@Url.Action("Index", "Role")"*@ class="nav-link"><i class="fa fa-sitemap"></i>&nbsp;&nbsp;Role</a>
+                            <a href="@Url.Action("Index", "Roles")" class="nav-link"><i class="fa fa-sitemap"></i>&nbsp;&nbsp;Role</a>
                         </li>
                     </ul>
                 </li>
