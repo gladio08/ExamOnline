@@ -13,7 +13,7 @@ namespace API.Context
     public class MyContext : IdentityDbContext
     {
         public MyContext(DbContextOptions<MyContext> options) : base(options) { }
-
+	// hello world
         public DbSet<Role> Role { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Participant> Participant { get; set; }
